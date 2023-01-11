@@ -1,0 +1,4 @@
+build/*
+libc/build/*
+*.o
+*.a

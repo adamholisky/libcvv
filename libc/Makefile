@@ -14,7 +14,30 @@ CC = /usr/local/osdev/bin/x86_64-elf-gcc
 LD = /usr/local/osdev/bin/x86_64-elf-ld
 ASM = /usr/local/osdev/bin/x86_64-elf-as
 
-CFLAGS = -ffreestanding -fno-omit-frame-pointer -O2 -nostdlib -static-libgcc -lgcc -g -I$(ROOT_DIR)/include $(C_OPTS) 
+CFLAGS = $(DEFINES) \
+	-ffreestanding \
+	-fno-omit-frame-pointer \
+	-O2 \
+	-g \
+	-nostdlib \
+	-static-libgcc \
+	-lgcc \
+	-I$(ROOT_DIR)/include \
+	-Wno-write-strings \
+	-std=c11             \
+    -fno-stack-protector \
+    -fno-stack-check     \
+    -fno-lto             \
+    -fno-pie             \
+    -fno-pic             \
+    -m64                 \
+    -march=x86-64        \
+    -mabi=sysv           \
+    -mno-mmx             \
+    -mno-sse2            \
+    -mno-red-zone        \
+    -mcmodel=kernel      \
+    -MMD                 
 ALAGS = $(C_OPTS) -I$(ROOT_DIR)/src/include
 
 #Support program and flags

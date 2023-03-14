@@ -92,7 +92,10 @@ longjmp:
 	ret
 *./
 
+
 /* Copyright 2011-2012 Nicholas J. Kain, licensed under standard MIT license */
+
+#ifdef ENABLE_x86_64
 .global __setjmp
 .global _setjmp
 .global setjmp
@@ -137,3 +140,4 @@ longjmp:
 	mov %rdx,%rsp
 	mov 56(%rdi),%rdx       /* this is the instruction pointer */
 	jmp *%rdx               /* goto saved address without altering rsp */
+#endif
